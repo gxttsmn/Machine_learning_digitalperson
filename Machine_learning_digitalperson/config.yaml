@@ -1,0 +1,37 @@
+# 模型训练配置文件
+model:
+  name: "LipSyncModel"
+  input_size: 96  # 输入图像尺寸
+  audio_feature_dim: 13  # 音频特征维度（MFCC）
+  hidden_dim: 512
+  num_layers: 3
+  dropout: 0.3
+
+# 训练配置
+training:
+  batch_size: 16
+  num_epochs: 100
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  save_interval: 10  # 每N个epoch保存一次
+  log_interval: 100  # 每N个batch记录一次
+  device: "cuda"  # cuda or cpu
+  
+# 数据配置
+data:
+  video_dir: "data/videos"
+  audio_dir: "data/audios"
+  output_dir: "data/processed"
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  fps: 25  # 视频帧率
+  audio_sample_rate: 16000  # 音频采样率
+  sequence_length: 5  # 序列长度（帧数）
+
+# 路径配置
+paths:
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+  output_dir: "outputs"
+
